@@ -47,11 +47,20 @@ module.exports = {
 
     kovan: {
       provider: () => new HDWalletProvider({ privateKeys: privateKeys.split(' '), providerOrUrl: `https://kovan.infura.io/v3/${infuraKey}` }),
-      network_id: 42,       // Ropsten's id
-      gas: 10000000,        // Ropsten has a lower block limit than mainnet
+      network_id: 42,       // kovan's id
+      gas: 10000000,        // kovan has a lower block limit than mainnet
       skipDryRun: true,     // Skip dry run before migrations? (default: false for public nets )
       networkCheckTimeout: 200000
     },
+    // https://polygon-mumbai.infura.io/v3/
+
+    polygon_mumbai : {
+      provider: () => new HDWalletProvider({ privateKeys: privateKeys.split(' '), providerOrUrl: `https://polygon-mumbai.infura.io/v3/${infuraKey}` }),
+      network_id: 80001,       // matic mumbai's id
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true
+    }
 
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
